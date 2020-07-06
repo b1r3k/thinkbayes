@@ -2,3 +2,5 @@ jupyter
 pandas
 scipy
 matplotlib
+-e git+https://github.com/AllenDowney/ThinkBayes2.git#egg=thinkbayes2
+-e git+https://github.com/AllenDowney/ThinkBayes2.git#egg=thinkplot
