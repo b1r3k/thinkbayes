@@ -1,4 +1,5 @@
-jupyter
+notebook
+jupytext==1.5.1
 pandas
 scipy
 matplotlib
