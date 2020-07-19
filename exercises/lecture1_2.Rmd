@@ -17,11 +17,11 @@ jupyter:
 ```
 
 ```{python}
+import thinkplot
 import pandas as pd
 from fractions import Fraction
 ```
 
-```{python}
 ## The dice problem
 
 Suppose I have a box with a 4-sided die, 6-sided die, an 8-sided die, 12-sided die and 20-sided die.
@@ -29,7 +29,6 @@ I choose one of the dice at random, roll it, and report that the outcome is a 1.
 What is the probability that I chose the 6-sided die?
 
 Here's a solution using a Bayes table:
-```
 
 ```{python}
 table = pd.DataFrame(index=[4, 6, 8, 12, 20])
@@ -45,6 +44,33 @@ table['posterior'] = table['unnorm'] / prob_data
 table
 ```
 
+1% of women at age forty who participate in routine screening have breast cancer.  80% of women with breast cancer will get positive mammographies.  9.6% of women without breast cancer will also get positive mammographies.  A woman in this age group had a positive mammography in a routine screening.  What is the probability that she actually has breast cancer?
+
 ```{python}
-import thinkplot
+table = pd.DataFrame(index=['Doesnt have cancer', 'Has cancer'])
+table['prior'] = 99 / 100., 1 / 100.
+table['likelihood'] = 96 / 1000., 8 / 10.
+table['unnorm'] = table['prior'] * table['likelihood']
+prob_data = table['unnorm'].sum()
+table['posterior'] = table['unnorm'] / prob_data
+table['posterior %'] = table['posterior'] * 100
+table
+```
+
+
+Suppose that a barrel contains many small plastic eggs.  Some eggs are painted red and some are painted blue.  40% of the eggs in the bin contain pearls, and 60% contain nothing.   30% of eggs containing pearls are painted blue, and 10% of eggs containing nothing are painted blue.  What is the probability that a blue egg contains a pearl?
+
+```{python}
+table = pd.DataFrame(index=['Is blue and has pearl', 'Empty or red'])
+table['prior'] = 60 / 100., 40 / 100.
+table['likelihood'] = 30 / 100., 10 / 100.
+table['unnorm'] = table['prior'] * table['likelihood']
+prob_data = table['unnorm'].sum()
+table['posterior'] = table['unnorm'] / prob_data
+table['posterior %'] = table['posterior'] * 100
+table
+```
+
+```{python}
+
 ```

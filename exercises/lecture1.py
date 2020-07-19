@@ -1,4 +1,5 @@
-import thinkbayes
+# -*- coding: utf-8 -*-
+import thinkbayes2 as thinkbayes
 
 print('\nCookie problem')
 print('-' * 25)
@@ -103,4 +104,4 @@ print('-' * 25)
 # probability that has cancer given positive mammography
 
 pmf = solve_bayes(dict(Cancer=0.01, NoCancer=0.99), dict(Cancer=0.8, NoCancer=0.096))
-print('Probability that women has cancer %s' % (pmf.Prob('Cancer')))
+print('Probability that women has cancer %s %.4f' % (pmf.Prob('Cancer'), (1 / 826.)*100))
