@@ -1,7 +1,8 @@
 # Some simple testing tasks (sorry, UNIX only).
 
-PYTHON=venv/bin/python3
-PIP=venv/bin/pip
+VENV=venv/bin
+PYTHON=$(VENV)/python3
+PIP=$(VENV)/pip
 
 
 update:
@@ -10,6 +11,9 @@ update:
 env:
 	test -d venv || python3 -m venv venv
 	$(PIP) install -U pip
+
+run:
+	$(VENV)/jupyter notebook
 
 remove-env:
 	test -d venv && deactivate && rm -rf venv
